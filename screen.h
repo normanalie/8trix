@@ -6,7 +6,7 @@
 
 class Screen : public LedControl {
   public:
-    Screen(int din, int clk, int cs) : LedControl(din, clk, cs, 1){}
+    Screen(int din, int clk, int cs, int brightness);
     void test_pattern();
 };
 

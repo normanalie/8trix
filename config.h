@@ -13,6 +13,7 @@
 #define MATRIX_DIN 4
 #define MATRIX_CLK 2
 #define MATRIX_CS 3
+#define BRIGHTNESS 3
 
 /* 
     Buttons

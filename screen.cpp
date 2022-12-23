@@ -1,6 +1,10 @@
 #include "screen.h"
 
-Screen::Screen(int din, int clk, int cs);
+Screen::Screen(int din, int clk, int cs, int brightness) : LedControl(din, clk, cs, 1){
+  this->clearDisplay(0);
+  this->shutdown(0, false);
+  this->setIntensity(0, brightness);
+}
 
 void Screen::test_pattern(){
   for(int j = 0; j < 8; j++){

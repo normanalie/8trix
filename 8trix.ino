@@ -1,14 +1,14 @@
 #include "config.h"
 #include "screen.h"
 
-//Init display
+//Init display OK
 //Turn on/Shutdown
 //Menu
 //Settings
 //Games list
 //Transitions
 
-Screen sc = Screen(MATRIX_DIN, MATRIX_CLK, MATRIX_CS);
+Screen sc = Screen(MATRIX_DIN, MATRIX_CLK, MATRIX_CS, BRIGHTNESS);
 
 void setup() {
   sc.test_pattern();
