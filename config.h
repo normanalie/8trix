@@ -12,7 +12,7 @@
 */
 #define MATRIX_DIN 4
 #define MATRIX_CLK 2
-#define MATRIX_CS 3
+#define MATRIX_CS 7
 #define BRIGHTNESS 3
 
 /* 
@@ -22,8 +22,8 @@
 #define DOWN 10
 #define LEFT 12
 #define RIGHT 9
-#define SELECT 7
-#define START 8
+#define SELECT 8
+#define START 3
 
 /* 
     Other

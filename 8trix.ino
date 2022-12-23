@@ -1,5 +1,6 @@
 #include "config.h"
 #include "screen.h"
+#include "power.h"
 
 //Init display OK
 //Turn on/Shutdown
@@ -8,14 +9,19 @@
 //Games list
 //Transitions
 
+
 Screen sc = Screen(MATRIX_DIN, MATRIX_CLK, MATRIX_CS, BRIGHTNESS);
+Power pwr = Power(START);
 
 void setup() {
   sc.test_pattern();
-
+  pinMode(SELECT, INPUT_PULLUP);
+  pinMode(START, INPUT_PULLUP);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+  sc.setLed(0, 2, 2, HIGH);
+  if (!digitalRead(SELECT)) {
+    pwr.shutdown(&sc);
+  }
 }
