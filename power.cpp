@@ -8,7 +8,7 @@ Power::Power(int interrupt_pin){
 
 void Power::shutdown(Screen *screen){
   delay(200); //Realease time
-  screen->shutdown(0, true);
+  screen->off();
   digitalWrite(LED_BUILTIN, LOW);
   attachInterrupt(digitalPinToInterrupt(this->pin), this->boot, FALLING);
 
@@ -16,6 +16,8 @@ void Power::shutdown(Screen *screen){
   set_sleep_mode(SLEEP_MODE_PWR_DOWN);
   delay(100);
   sleep_cpu();
+
+  screen->on();
 }
 
 void Power::boot(){
