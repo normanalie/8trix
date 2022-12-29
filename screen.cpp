@@ -1,4 +1,5 @@
 #include "screen.h"
+#include "font.h"
 
 Screen::Screen(int din, int clk, int cs, int brightness) : LedControl(din, clk, cs, 1){
   this->clearDisplay(SCREEN_ADDR);

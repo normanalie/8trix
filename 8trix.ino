@@ -35,7 +35,7 @@ void setup() {
   Serial.begin(9600);
   digitalWrite(LED_BUILTIN, HIGH);
 
-  *game = Menu(sc.display);
+  *game = Menu();
 
   sc.test_pattern();
 

@@ -4,7 +4,7 @@ Game::Game(){
   return;
 }
 
-void setup(){
+void Game::setup(){
   return;
 }
 
