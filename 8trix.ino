@@ -2,6 +2,8 @@
 #include "screen.h"
 #include "power.h"
 #include "io.h"
+#include "game.h"
+#include "menu.h"
 
 //Init display OK
 //Turn on/Shutdown OK
@@ -21,15 +23,50 @@ Button down = Button(DOWN, INPUT_PULLUP, true);
 Button left = Button(LEFT, INPUT_PULLUP, true);
 Button right = Button(RIGHT, INPUT_PULLUP, true);
 
+Game *game = NULL;
+
+unsigned long prev_tick = millis();
+unsigned long prev_frame = millis();
+
+void update_game();
+void update_screen();
+
 void setup() {
   Serial.begin(9600);
   digitalWrite(LED_BUILTIN, HIGH);
+
+  *game = Menu();
+
   sc.test_pattern();
 }
 
 void loop() {
-  if(start.long_press()){
+  if(start.long_press()){  //On/Off
     pwr.shutdown(&sc);
     digitalWrite(LED_BUILTIN, HIGH);
   }
+
+  game->loop();
+
+  if(millis() - prev_frame >= 1000/FPS){
+    update_screen();
+    prev_frame = millis();
+  }
+  
+  if(millis() - prev_tick >= 1000/TPS){
+    update_game();
+    prev_tick = millis();
+  }
+}
+
+
+void update_game(){
+  game->game_update();
+  return;
+}
+
+
+void update_screen(){
+  game->frame_update();
+  return;
 }
