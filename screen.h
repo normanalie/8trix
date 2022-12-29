@@ -3,6 +3,7 @@
 
 #include "Arduino.h"
 #include "LedControl.h"
+#include "font.h"
 
 #define SCREEN_SIZE 8
 #define SCREEN_ADDR 0

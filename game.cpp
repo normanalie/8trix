@@ -4,11 +4,11 @@ Game::Game(){
   return;
 }
 
-void Game::loop(){
+void setup(){
   return;
 }
 
-void Game::frame_update(){
+void Game::loop(){
   return;
 }
 

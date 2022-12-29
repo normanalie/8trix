@@ -4,17 +4,18 @@ Menu::Menu() : Game(){
   return;
 }
 
-void Menu::loop(){
+void Menu::setup(bool disp[SCREEN_SIZE][SCREEN_SIZE]){
+  Game::setup();
+  
+  return;
+}
+
+void Menu::loop(bool disp[SCREEN_SIZE][SCREEN_SIZE]){
   Game::loop();
   return;
 }
 
-void Menu::frame_update(){
-  Game::frame_update();
-  return;
-}
-
-void Menu::game_update(){
+void Menu::game_update(bool disp[SCREEN_SIZE][SCREEN_SIZE]){
   Game::game_update();
   return;
 }

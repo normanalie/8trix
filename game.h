@@ -6,8 +6,8 @@
 class Game{
   public:
     Game();
+    void setup();
     void loop();
-    void frame_update();
     void game_update();
 };
 

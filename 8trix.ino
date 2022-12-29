@@ -35,9 +35,11 @@ void setup() {
   Serial.begin(9600);
   digitalWrite(LED_BUILTIN, HIGH);
 
-  *game = Menu();
+  *game = Menu(sc.display);
 
   sc.test_pattern();
+
+  game->setup();  
 }
 
 void loop() {
@@ -49,12 +51,12 @@ void loop() {
   game->loop();
 
   if(millis() - prev_frame >= 1000/FPS){
-    update_screen();
+    sc.update();
     prev_frame = millis();
   }
   
   if(millis() - prev_tick >= 1000/TPS){
-    update_game();
+    game->game_update();
     prev_tick = millis();
   }
 }
@@ -62,11 +64,5 @@ void loop() {
 
 void update_game(){
   game->game_update();
-  return;
-}
-
-
-void update_screen(){
-  game->frame_update();
   return;
 }
