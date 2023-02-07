@@ -2,13 +2,14 @@
 #define GAME_H
 
 #include "Arduino.h"
+#include "screen.h"
 
 class Game{
   public:
     Game();
-    void setup();
-    void loop();
-    void game_update();
+    virtual void setup();
+    virtual void loop();
+    virtual void game_update();
 };
 
 #endif

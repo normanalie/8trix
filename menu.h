@@ -4,12 +4,13 @@
 #include "game.h"
 #include "screen.h"
 
-class Menu : public Game{
+class Menu : virtual public Game{
   public:
-    Menu();
-    void setup(bool disp[SCREEN_SIZE][SCREEN_SIZE]);
-    void loop(bool disp[SCREEN_SIZE][SCREEN_SIZE]);
-    void game_update(bool disp[SCREEN_SIZE][SCREEN_SIZE]);
+    Menu(Screen *screen);
+    virtual void setup(Screen *screen);
+    virtual void loop();
+    virtual void game_update();
+    Screen *screen;
 };
 
 #endif

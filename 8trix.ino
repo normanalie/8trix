@@ -2,7 +2,6 @@
 #include "screen.h"
 #include "power.h"
 #include "io.h"
-#include "game.h"
 #include "menu.h"
 
 //Init display OK
@@ -23,7 +22,10 @@ Button down = Button(DOWN, INPUT_PULLUP, true);
 Button left = Button(LEFT, INPUT_PULLUP, true);
 Button right = Button(RIGHT, INPUT_PULLUP, true);
 
-Game *game = NULL;
+Game* gm = NULL;
+gm = dynamic_cast<Menu*>(gm);
+gm = &Menu(&sc);
+
 
 unsigned long prev_tick = millis();
 unsigned long prev_frame = millis();
@@ -35,11 +37,10 @@ void setup() {
   Serial.begin(9600);
   digitalWrite(LED_BUILTIN, HIGH);
 
-  *game = Menu();
-
+  Serial.println("prout");
   sc.test_pattern();
-
-  game->setup();  
+  
+  gm->setup(&sc);
 }
 
 void loop() {
@@ -48,7 +49,7 @@ void loop() {
     digitalWrite(LED_BUILTIN, HIGH);
   }
 
-  game->loop();
+  gm->loop();
 
   if(millis() - prev_frame >= 1000/FPS){
     sc.update();
@@ -56,13 +57,7 @@ void loop() {
   }
   
   if(millis() - prev_tick >= 1000/TPS){
-    game->game_update();
+    gm->game_update();
     prev_tick = millis();
   }
-}
-
-
-void update_game(){
-  game->game_update();
-  return;
 }

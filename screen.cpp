@@ -47,3 +47,18 @@ void Screen::off(){
 void Screen::on(){
   this->shutdown(SCREEN_ADDR, false);
 }
+
+void Screen::print_chr(char chr){
+  char *character = NULL;
+  if(chr >= 'a' && chr <= 'z'){
+    character = Font::chr[chr-'a'];
+  }else if(chr >= 'A' && chr <= 'Z'){
+    character = Font::chr[chr-'A'];
+  } 
+
+  if(character){
+    for(int i=SCREEN_SIZE; i>(SCREEN_SIZE-FONT_SIZE); i--){
+      this->setColumn(0, i-1, character[SCREEN_SIZE-i]<<3);
+    }
+  }
+}

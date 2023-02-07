@@ -14,6 +14,7 @@ class Screen : public LedControl {
     void update();
     void off();
     void on();
+    void print_chr(char chr);
     bool display[SCREEN_SIZE][SCREEN_SIZE];
   private:
     bool buffer[SCREEN_SIZE][SCREEN_SIZE];
